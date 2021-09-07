@@ -11,6 +11,7 @@ public class GoodsApp {
 		goods.setCountSold(20);
 	
 		System.out.println(goods.toString());
+		System.out.println("git test");
 		
 	}
 
