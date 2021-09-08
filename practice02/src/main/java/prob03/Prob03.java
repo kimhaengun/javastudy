@@ -23,6 +23,7 @@ public class Prob03 {
 				c[i]=' ';
 			}
 		}
+		//String일 시 replace로 문자 치환 하기
 	}
 
 	private static void printCharArray(char[] c) {
