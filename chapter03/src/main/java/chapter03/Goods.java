@@ -34,6 +34,18 @@ public class Goods {
 	public void setCountSold(int countSold) {
 		this.countSold = countSold;
 	}
+	@Override
+	public String toString() {
+		return "Goods [name=" + name + ", price=" + price + ", countStock=" + countStock + ", countSold=" + countSold
+				+ "]";
+	}
+	public void showInfo() {
+		// TODO Auto-generated method stub
+		System.out.println("name = "+name);
+		System.out.println("price = "+price);
+		System.out.println("countStock = "+countStock);
+		System.out.println("countSold = "+countSold);
+	}
 	
 	
 }
