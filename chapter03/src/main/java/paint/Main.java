@@ -6,6 +6,8 @@ public class Main {
 	p.setX(10);
 	p.setY(10);
 	drawPoint(p);
+//	p.disapear();
+	p.show(false);
  }
  
  public static void drawPoint(Point point) {

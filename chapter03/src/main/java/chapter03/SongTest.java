@@ -12,5 +12,8 @@ public class SongTest {
 
 		Song song = new Song("좋은날", "아이유", "Real", "이민수 작곡", 2010, "3번 track");
 		song.show();
+		
+		Song song1 = new Song("신호등","이무진");
+		song1.show();
 	}
 }

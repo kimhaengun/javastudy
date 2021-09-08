@@ -8,6 +8,13 @@ public class Song {
 	private int year;
 	private String track;
 	
+	//생성자 오버로딩
+	public Song(String title, String artist) {
+//		this.title = title;
+//		this.artist = artist;
+		this(title,artist,null,null,0,null);
+	}
+	
 	//생성자
 	public Song(String title, String artist, String album, String composer, int year, String track) {
 		this.title = title;
@@ -16,6 +23,7 @@ public class Song {
 		this.composer = composer;
 		this.year = year;
 		this.track = track;
+		System.out.println("some code~");
 	}
 	
 	public String getTitle() {
