@@ -12,6 +12,10 @@ public class Goods {
 	private int countStock;
 	private int countSold;
 	
+	public int calcDiscountPrice(int percentage) {
+		return price*percentage/100;
+	}
+	
 	//생성자
 	//생성자 없으면 객체 생성 불가능.. 없으면 자동으로 생성 됨	
 	public Goods() {

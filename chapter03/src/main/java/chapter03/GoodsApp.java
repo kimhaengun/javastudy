@@ -6,7 +6,7 @@ public class GoodsApp {
 		// TODO Auto-generated method stub
 		Goods goods = new Goods();
 		goods.setName("Nikon");
-		goods.setPrice(400000);
+		goods.setPrice(40000);
 		goods.setCountStock(30);
 		goods.setCountSold(20);
 		System.out.println(goods.toString());
@@ -16,6 +16,9 @@ public class GoodsApp {
 		Goods goods2 = new Goods();
 		Goods goods3 = new Goods();
 		System.out.println(Goods.countOfGoods);
+		
+		int discountPrice = goods.calcDiscountPrice(50);
+		System.out.println(discountPrice);
 	}
 
 }
