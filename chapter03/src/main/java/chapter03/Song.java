@@ -8,6 +8,16 @@ public class Song {
 	private int year;
 	private String track;
 	
+	//생성자
+	public Song(String title, String artist, String album, String composer, int year, String track) {
+		this.title = title;
+		this.artist = artist;
+		this.album = album;
+		this.composer = composer;
+		this.year = year;
+		this.track = track;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -58,9 +68,6 @@ public class Song {
 		this.track = track;
 	}
 
-	public Song() {
-		
-	}
 	
 	
 }
