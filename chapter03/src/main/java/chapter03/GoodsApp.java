@@ -9,11 +9,13 @@ public class GoodsApp {
 		goods.setPrice(400000);
 		goods.setCountStock(30);
 		goods.setCountSold(20);
-		goods.toString();
 		System.out.println(goods.toString());
 		goods.showInfo();
-
 		
+		System.out.println(Goods.countOfGoods);
+		Goods goods2 = new Goods();
+		Goods goods3 = new Goods();
+		System.out.println(Goods.countOfGoods);
 	}
 
 }
