@@ -1,6 +1,6 @@
 package paint;
 
-public class Point {
+public class Point implements Drawable{
 	private int x;
 	private int y;
 	
@@ -32,6 +32,11 @@ public class Point {
 	}
 	public void setY(int y) {
 		this.y = y;
+	}
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		show();
 	}
 	
 }

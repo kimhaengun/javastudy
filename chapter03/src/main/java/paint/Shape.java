@@ -1,11 +1,11 @@
 package paint;
 
-public abstract class Shape {
+public abstract class Shape implements Drawable{
 	private String lineColor;
 	private String fillColor;
 	
-	//추상클래스 -draw()의 기능은 전부 다름
-	public abstract void draw();
+//	//추상클래스 -draw()의 기능은 전부 다름
+//	public abstract void draw();
 	
 	public String getLineColor() {
 		return lineColor;
