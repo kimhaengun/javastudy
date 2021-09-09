@@ -1,4 +1,6 @@
-package paint;
+package paint.text;
+
+import paint.util.Drawable;
 
 public class GraphicText implements Drawable {
 	private String text;

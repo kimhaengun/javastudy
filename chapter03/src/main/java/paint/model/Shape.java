@@ -1,4 +1,6 @@
-package paint;
+package paint.model;
+
+import paint.util.Drawable;
 
 public abstract class Shape implements Drawable{
 	private String lineColor;

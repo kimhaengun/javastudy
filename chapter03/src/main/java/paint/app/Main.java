@@ -1,4 +1,13 @@
-package paint;
+package paint.app;
+
+import paint.model.Circle;
+import paint.model.Rectangle;
+import paint.model.Shape;
+import paint.model.Triangle;
+import paint.point.ColorPoint;
+import paint.point.Point;
+import paint.text.GraphicText;
+import paint.util.Drawable;
 
 public class Main {
 	public static void main(String[] args) {

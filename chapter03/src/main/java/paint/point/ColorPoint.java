@@ -1,4 +1,7 @@
-package paint;
+package paint.point;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ColorPoint extends Point {
 	private String color;
@@ -13,6 +16,7 @@ public class ColorPoint extends Point {
 		super(x, y);
 //		setX(x);
 //		setY(y);
+		List l = new ArrayList();
 		this.color=color;
 	}
 

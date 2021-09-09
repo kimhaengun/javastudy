@@ -1,4 +1,4 @@
-package paint;
+package paint.model;
 
 public class Circle extends Shape {
 	private int x1;

@@ -1,4 +1,6 @@
-package paint;
+package paint.point;
+
+import paint.util.Drawable;
 
 public class Point implements Drawable{
 	private int x;
