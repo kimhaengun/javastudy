@@ -2,19 +2,19 @@ package paint;
 
 public class Main {
 	public static void main(String[] args) {
-		Point p = new Point();
-		p.setX(10);
-		p.setY(10);
+		Point p = new Point(10,10);
+//		p.setX(10);
+//		p.setY(10);
 //		drawPoint(p);
 		draw(p);
 	//	p.disapear();
 		p.show(false);
 		
-		Point colorPoint = new ColorPoint();
+		Point colorPoint = new ColorPoint(100,200,"RED");
 		colorPoint.setX(100);
 		colorPoint.setY(200);
 		//다운캐스팅
-		((ColorPoint)colorPoint).setColor("Red");
+//		((ColorPoint)colorPoint).setColor("Red");
 //		drawPoint(colorPoint);
 		draw(colorPoint);
 		colorPoint.show(false);
