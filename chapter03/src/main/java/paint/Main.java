@@ -17,6 +17,18 @@ public class Main {
 		drawPoint(colorPoint);
 		colorPoint.show(false);
 		colorPoint.show(true);
+		
+		//삼각형 그리기
+		Triangle triangle = new Triangle();
+		drawTriangle(triangle);
+		
+		//사각형 그리기
+		Rectangle rectangle = new Rectangle();
+		drawRectangle(rectangle);
+		
+		//원 그리기
+		Circle circle = new Circle();
+		drawCircle(circle);
 	}
 
 	public static void drawPoint(Point point) {
@@ -26,4 +38,16 @@ public class Main {
 //	public static void drawColorPoint(ColorPoint colorPoint) {
 //		colorPoint.show();
 //	}
+	
+	public static void drawTriangle(Triangle triangle) {
+		triangle.draw();
+	}
+	
+	public static void drawRectangle(Rectangle rectangle) {
+		rectangle.draw();
+	}
+	
+	public static void drawCircle(Circle circle) {
+		circle.draw();
+	}
 }
