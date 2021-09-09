@@ -37,6 +37,10 @@ public class Main {
 //		drawCircle(circle);
 //		drawShape(circle);
 		draw(circle);
+		
+		//Graphic
+		GraphicText graphicText = new GraphicText("Hello World");
+		draw(graphicText);
 	}
 	public static void draw(Drawable drawble) {
 		drawble.draw();
