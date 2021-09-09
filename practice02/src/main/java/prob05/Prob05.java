@@ -11,12 +11,17 @@ public class Prob05 {
 		while( true ) {
 			
 			/* 게임 작성 */
+			System.out.println("수를 결정하였습니다. 맞추어 보세요.");
+			System.out.println("1~100");
+			int result = scanner.nextInt();
 
 			// 정답 램덤하게 만들기
 			Random random = new Random();
 			int correctNumber = random.nextInt( 100 ) + 1;
-			System.out.println(correctNumber);
-
+			
+			for (int i = 0; i < args.length; i++) {
+				
+			}	
 			
 			//새 게임 여부 확인하기
 			System.out.print( "다시 하겠습니까(y/n)>>" );
@@ -25,6 +30,7 @@ public class Prob05 {
 				break;
 			}
 		}
+		
 		
 		scanner.close();
 	}
