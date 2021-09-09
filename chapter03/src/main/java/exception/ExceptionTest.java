@@ -5,7 +5,7 @@ public class ExceptionTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int a = 10;
-		int b = 10;
+		int b = 10-a;
 		
 		System.out.println("some code1 ...");
 		try {
