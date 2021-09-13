@@ -13,6 +13,7 @@ public class Gugudan {
 		resultNumber = l * r;
 
 		int[] answerNumbers = randomizeAnswers();
+		//정답이 될만한 값 넣어주기
 		int loc = randomize(0, 8);
 		answerNumbers[loc] = resultNumber;
 
