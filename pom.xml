@@ -40,5 +40,6 @@
 		<module>chapter04</module>
 		<module>practice04</module>
 		<module>practice05</module>
+		<module>finaltest</module>
 	</modules>
 </project>
