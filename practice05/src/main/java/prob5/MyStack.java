@@ -8,6 +8,11 @@ public class MyStack {
 	protected int size; //3 
 	protected int top; // 초기값 0
 	protected String[] array;
+	/*제너릭 배열 설정 -> 제너릭(타입을 설정할 수 있다.)*/ 
+	// 오브젝트로 생성후 캐스팅
+	// ex) MyStack<T>
+	//     T[] buffer = (T[])new Object[];
+	
 	public MyStack(int i) {
 		this.size = i;
 		this.top=-1;
