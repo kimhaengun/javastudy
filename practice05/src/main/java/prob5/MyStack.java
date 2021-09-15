@@ -47,10 +47,8 @@ public class MyStack {
 	public String pop() {
 		// TODO Auto-generated method stub
 		String result = array[top];
-		array[top]=null;
-		top--;
+		array[top--]=null;
 		for (int i = 0; i < array.length; i++) {
-			System.out.println("null 체크:"+i+":"+array[i]);
 		}
 		return result;
 	}
