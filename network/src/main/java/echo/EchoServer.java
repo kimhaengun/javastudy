@@ -25,7 +25,16 @@ public class EchoServer {
 			log("starts ... [port:" + PORT + "]");
 
 			// 3.accept
-			Socket socket = serverSocket.accept();
+			Socket socket = serverSocket.accept(); //connet 기다림
+			//connet 연결되면
+			//상대편의 소켓 주소
+			InetSocketAddress inetRemoteSocketAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
+			//inetSocketAddress 부모(inetAddress)의 getHostAddress 가져오기
+			String remoteHostAddress = inetRemoteSocketAddress.getAddress().getHostAddress();
+			
+			int remoteHostPort = inetRemoteSocketAddress.getPort();
+			log("연결된 client["+remoteHostAddress+":"+remoteHostPort+"]");
+			
 			try {
 //			InputStream in = socket.getInputStream();
 				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
@@ -34,7 +43,7 @@ public class EchoServer {
 				// 데이터 읽기
 				while (true) {
 					String data = br.readLine();
-					if (data == null) {// 읽을 데이터가 없슴
+					if (data == null) {// 읽을 데이터가 없슴 String=null
 						log("close by client");
 						break;
 					}
