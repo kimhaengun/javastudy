@@ -55,6 +55,10 @@ public class TCPServer {
 				//처음(0)부터 끝(readByteCount)까지
 				String data =new String(buffer,0,readByteCount,"utf-8");
 				System.out.println("[server] 데이터 받음:"+data);
+				
+				//6.데이터 쓰기
+				//String -> byte = getBytes
+				os.write(data.getBytes("utf-8"));
 			}
 			}catch(SocketException e) {
 				System.out.println("[server error] 비정상적으로 종료됨 :"+e);
