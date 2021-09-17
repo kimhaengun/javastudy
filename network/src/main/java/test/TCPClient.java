@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 
 public class TCPClient {
 	//클라이언트
@@ -17,6 +18,24 @@ public class TCPClient {
 		try {
 			//1. 소켓 생성
 			socket = new Socket();
+			
+			//1-1 소켓 버퍼 사이즈 확인
+			int rcvBufferSize = socket.getReceiveBufferSize();
+			int sendBufferSize = socket.getSendBufferSize();
+			System.out.println(rcvBufferSize+":"+sendBufferSize);
+			
+			//1-2 소켓 버퍼 사이즈 변경
+			socket.setReceiveBufferSize(1024*10);
+			socket.setSendBufferSize(1024*10);
+			rcvBufferSize = socket.getReceiveBufferSize();
+			sendBufferSize = socket.getSendBufferSize();
+			System.out.println(rcvBufferSize+":"+sendBufferSize);
+			
+			//1-3 SO_NODEALAY(Nagle Algorithm off)
+			socket.setTcpNoDelay(true);
+			
+			//1-4 SO_TIMEOUT
+			socket.setSoTimeout(3000);
 			
 			//2.서버 연결
 			socket.connect(new InetSocketAddress(SERVER_IP,SERVER_PORT));
@@ -39,6 +58,9 @@ public class TCPClient {
 				}
 			data = new String(buffer,0,readByteCount,"UTF-8");
 			System.out.println("[client] 받은 데이터:"+data);
+		} catch (SocketTimeoutException e) {
+			// TODO Auto-generated catch block
+			System.out.println("[client] 시간 오버:"+e);
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			System.out.println("[client] 비정상 종료:"+e);
