@@ -15,7 +15,6 @@ public class ChatServerThread extends Thread {
 	private Socket socket;
 	private List<Writer> listWriters;
 	private PrintWriter pw;
-	
 	public ChatServerThread(Socket socket,List<Writer> listWriters) {
 		this.socket = socket;
 		this.listWriters = listWriters;
@@ -29,16 +28,17 @@ public class ChatServerThread extends Thread {
 		String remoteHostAddress = remoteSocketAddress.getAddress().getHostAddress();
 		
 		int remoteHostPort = remoteSocketAddress.getPort();
-		
+		System.out.println("상대방 주소 확인:"+remoteHostPort);
+
 		try {
 			//스트림 얻기
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
-			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(),"UTF-8"),true);
+			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(),"UTF-8"),true);
 			
 			//3요청 처리
 			while(true) {
 				String request = br.readLine();
-				
+				System.out.println("readLine 동작함?"+request);
 				if(request == null) {
 					ChatServer.log("클라이언트로 부터 연결 끊김");
 					doQuit(pw);
@@ -47,6 +47,8 @@ public class ChatServerThread extends Thread {
 				//4.프로토콜 분석
 				
 				String[] tokens =request.split(":");
+				System.out.println("tokens 정보->"+tokens[0]+":"+tokens[1]);
+				System.out.println("message tokens 정보->"+tokens[0]+":"+tokens[1]);
 				if("join".equals(tokens[0])) {
 					doJoin(tokens[1],pw);
 				}
@@ -55,8 +57,6 @@ public class ChatServerThread extends Thread {
 				}
 				if("quit".equals(tokens[0])) {
 					doQuit(pw);
-				}else {
-					ChatServer.log("에러:알수 없는 요청("+tokens[0]+")");
 				}
 		
 			}//end while
@@ -92,12 +92,11 @@ public class ChatServerThread extends Thread {
 	}//end removeWriter
 
 	private void doMessage(String message) {
-		String data = message;
-		if(data == null) {
-			ChatServer.log("읽을 데이터가 없습니다.");
-		}
-		System.out.println(nickname+":"+data);
+		System.out.println("===doMessage 탐?===");
+		String data = nickname+":"+message;
+		System.out.println("메세지 정보:"+data);
 		pw.println(data);
+		
 		
 	}//end doMessage
 
@@ -105,6 +104,7 @@ public class ChatServerThread extends Thread {
 		// TODO Auto-generated method stub
 		this.nickname = nickname;
 		//broadcast=채팅방 입장 시 모든 사용자에게 메세지 출력
+		System.out.println("nickname 받음?"+nickname);
 		String data = nickname+"님이 참여하였습니다.";
 		broadcast(data);
 		
@@ -112,8 +112,7 @@ public class ChatServerThread extends Thread {
 		addWrite(writer);
 		
 		//ack - 방 참가 성공
-		pw.println("join:ok");
-		pw.flush();
+		((PrintWriter) writer).println("join:ok");
 		
 	}//end dojoin
 
@@ -121,8 +120,8 @@ public class ChatServerThread extends Thread {
 		synchronized (listWriters) {
 			for(Writer writer : listWriters) { //모든 참가자 --> writer 
 				pw = (PrintWriter)writer;
+				System.out.println("broadcast pw 확인: "+pw);
 				pw.println(data);
-				pw.flush();
 			}
 		}
 	}//end broadcast
@@ -132,7 +131,7 @@ public class ChatServerThread extends Thread {
 		synchronized (listWriters) {
 			//List에 writer 추가
 			listWriters.add(writer);
-			
+			ChatServer.log("클라이언트 list:"+listWriters);
 		}
 	}//end addWrite
 	

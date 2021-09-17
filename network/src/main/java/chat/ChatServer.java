@@ -14,19 +14,19 @@ public class ChatServer {
 	
 	public static void main(String[] args) {
 		ServerSocket serversocket = null;
+		List<Writer> listWriters = new ArrayList<Writer>(); //printwriter를 담아야함.;
 		
 		try {
 			//서버소켓
 			serversocket = new ServerSocket();
 			//바인딩
 			serversocket.bind(new InetSocketAddress("0.0.0.0",PORT));
-			List<Writer> listWriters =null;
 			System.out.println("서버 on");
 			//accept 요청
 			while(true) {
 				//소켓
 				Socket socket = serversocket.accept();
-				listWriters = new ArrayList<Writer>();
+
 				new ChatServerThread(socket,listWriters).start();
 			}
 		} catch (IOException e) {
