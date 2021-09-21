@@ -14,7 +14,7 @@ public class ChatServerThread extends Thread {
 	private String nickname;
 	private Socket socket;
 	private List<Writer> listWriters;
-	private PrintWriter pw;
+	private PrintWriter pw = null;
 	public ChatServerThread(Socket socket,List<Writer> listWriters) {
 		this.socket = socket;
 		this.listWriters = listWriters;
@@ -57,6 +57,7 @@ public class ChatServerThread extends Thread {
 				}
 				if("quit".equals(tokens[0])) {
 					doQuit(pw);
+					break; //종료시 break
 				}
 		
 			}//end while
@@ -96,6 +97,7 @@ public class ChatServerThread extends Thread {
 		String data = nickname+":"+message;
 		System.out.println("메세지 정보:"+data);
 		pw.println(data);
+		System.out.println("test:"+pw);
 		
 		
 	}//end doMessage

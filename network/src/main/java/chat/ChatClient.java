@@ -50,11 +50,13 @@ public class ChatClient {
 			
 			// 키보드 입력 처리 하기
 			while (true) {
-				System.out.print(">>");
 				String input = scanner.nextLine();
 				if (input == null) {
 					System.out.println("메시지 적으세요");
-				} else {
+				} else if("quit".equals(input)){
+					pw.println("quit");
+					break;
+				}else{
 					// 메시지 처리
 					pw.println("message:"+input);
 				}
