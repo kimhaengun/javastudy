@@ -47,8 +47,9 @@ public class ChatServerThread extends Thread {
 				//4.프로토콜 분석
 				
 				String[] tokens =request.split(":");
-				System.out.println("tokens 정보->"+tokens[0]+":"+tokens[1]);
-				System.out.println("message tokens 정보->"+tokens[0]+":"+tokens[1]);
+				//토큰정보 확인 완료..
+//				System.out.println("tokens 정보->"+tokens[0]+":"+tokens[1]);
+//				System.out.println("message tokens 정보->"+tokens[0]+":"+tokens[1]);
 				if("join".equals(tokens[0])) {
 					doJoin(tokens[1],pw);
 				}
@@ -96,8 +97,8 @@ public class ChatServerThread extends Thread {
 		System.out.println("===doMessage 탐?===");
 		String data = nickname+":"+message;
 		System.out.println("메세지 정보:"+data);
-		pw.println(data);
-		System.out.println("test:"+pw);
+		//메세지 받아서 broadcast에 넘겨주기.
+		broadcast(data);
 		
 		
 	}//end doMessage

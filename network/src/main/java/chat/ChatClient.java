@@ -18,10 +18,8 @@ public class ChatClient {
 		String nickname = null;
 		// 서버에 던지는 데이터 형식 Nickname:data
 		try {
-			// 키보드 연결
+			// 키보드 연결만 하자!;;
 			Scanner scanner = new Scanner(System.in);
-			System.out.print("닉네임>>");
-			nickname = scanner.nextLine();
 
 			// 소켓 생성
 			socket = new Socket();
@@ -31,29 +29,25 @@ public class ChatClient {
 			// reader/writer 생성
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
-
+			
+			System.out.print("닉네임>>");
+			nickname = scanner.nextLine();
 			pw.println("join:" + nickname);
 //			System.out.println(nickname);
-
-			while (true) {
-				String line = br.readLine();
+			String line = br.readLine();
 				if ("join:ok".equals(line)) {
 					System.out.println("방 입장 완료");
-					break; //보류
 				}else {
-					System.out.println("방 입장 실패");
-					
+					System.out.println("방 입장 실패");		
 				}
-			}
+
 
 			new ChatClientThread(socket).start();
 			
 			// 키보드 입력 처리 하기
 			while (true) {
 				String input = scanner.nextLine();
-				if (input == null) {
-					System.out.println("메시지 적으세요");
-				} else if("quit".equals(input)){
+				if ("quit".equals(input)) {
 					pw.println("quit");
 					break;
 				}else{

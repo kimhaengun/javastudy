@@ -23,12 +23,18 @@ public class ChatClientThread extends Thread {
 				break;
 			}else {
 				System.out.println(message);
-				
 			}
 			}//end while
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("IOException : "+e);
+		}finally {
+			try {
+				socket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
